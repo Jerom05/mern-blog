@@ -4,14 +4,16 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const config = require('config')
 const {User, validation} = require('../model/user')
+const auth = require('../middleware/auth')
 
-router.get('/me',async(req, res)=>{    
-    
+router.get('/me',[auth],async(req, res)=>{    
+    const user = await User.findById(req.user._id).select("-password")
+    return res.status(200).send(user)
 })
 
 router.get('/',async(req, res)=>{    
-    const user = await User.find().select("-password").sort('name')
-    if(user) return res.status(200).send(user)
+    const user = await User.find().select("-password")
+    return res.status(200).send(user)
 })
 
 router.post('/', async (req,res)=>{
@@ -26,6 +28,7 @@ router.post('/', async (req,res)=>{
         name:req.body.name,
         email:req.body.email,
     })
+
     const salt = await bcrypt.genSalt(10)
     const password = await bcrypt.hash(req.body.password, salt)
     user.password = password
@@ -38,7 +41,5 @@ router.post('/', async (req,res)=>{
         .header("access-control-expose-headers", "x-auth-token")
         .json({token})
 })
-
-
 
 module.exports = router
