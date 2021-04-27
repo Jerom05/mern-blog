@@ -1,0 +1,13 @@
+.header-section{
+ 
+    display: flex;
+    flex-direction: row-reverse;
+    height: fit-content;
+    padding: 0.5rem;
+}
+
+.item{
+    margin: 0.5rem;
+    text-decoration: none;
+    color: black;
+}
