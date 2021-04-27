@@ -28,7 +28,6 @@ const Login = (props)=>{
         event.preventDefault()
         console.log('submit')
         submit(state.email,state.password);
-        //state.errors.invalid = 'dd'
         setState({...state})
         console.log(state)
     }
@@ -83,7 +82,7 @@ const Login = (props)=>{
         <div className='login-section'>
             <div className='from-group'>
                 <form onSubmit = {event=>handleSubmit(event)}>
-                    <div>
+                    <div className='input-field'>
                         <label>email</label>
                         <input 
                             name='email'
@@ -94,7 +93,7 @@ const Login = (props)=>{
                             {state.errors.email === null ? null: <div>{state.errors.email}</div>} 
                     </div>
                     <hr />
-                    <div>
+                    <div className='input-field'>
                         <label>password</label>
                         <input 
                             name='password'
