@@ -11,7 +11,7 @@ router.get('/me',[auth],async(req, res)=>{
     return res.status(200).send(user)
 })
 
-router.get('/',async(req, res)=>{    
+router.get('/',[auth],async(req, res)=>{    
     const user = await User.find().select("-password")
     return res.status(200).send(user)
 })

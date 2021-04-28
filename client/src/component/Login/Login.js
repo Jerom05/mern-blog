@@ -1,7 +1,6 @@
 import {useState} from 'react'
 import axios from 'axios'
 import {validateEmail, validatePassword} from './validate'
-import { set } from 'mongoose'
 
 const Login = (props)=>{
     const [state, setState] = useState({

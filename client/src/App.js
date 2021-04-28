@@ -5,8 +5,8 @@ import NavBar from './component/NavBar/navBar'
 import Home from './component/Home'
 import Login from './component/Login/Login'
 import Logout from './component/Logout'
-import Register from './component/Register'
-import UserList from './component/UserList'
+import Register from './component/Register/Register'
+import UserList from './component/UserList/UserList'
 import UserProfile from './component/userProfile'
 
 
@@ -20,7 +20,7 @@ const App = ()=>{
         <Route path='/Login' component = {Login}/>
         <Route path='/Logout' component={Logout} />
         <Route path='/Register' component = {Register}/>
-        <Route path='/userlist' component= { UserList} />
+        <Route path='/users' component= { UserList} />
         <Route path='/profile' component={UserProfile} />
       </Switch>
     </div>
