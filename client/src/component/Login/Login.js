@@ -2,6 +2,8 @@ import {useState} from 'react'
 import axios from 'axios'
 import {validateEmail, validatePassword} from './validate'
 
+import './Login.css'
+
 const Login = (props)=>{
     const [state, setState] = useState({
             email:'', 
@@ -78,31 +80,32 @@ const Login = (props)=>{
     }
     
     return(
-        <div className='login-section'>
+        <div className='login-section container-box'>
+            <h3>Login</h3>
             <div className='from-group'>
                 <form onSubmit = {event=>handleSubmit(event)}>
-                    <div className='input-field'>
-                        <label>email</label>
+                    <div className='input-block'>
                         <input 
                             name='email'
-                            type='name'
+                            type='text'
                             value={state.email}
+                            placeholder='Email'
                             onChange = {e=>handlChange(e)}
-                            />
-                            {state.errors.email === null ? null: <div>{state.errors.email}</div>} 
+                            /> 
                     </div>
-                    <hr />
-                    <div className='input-field'>
-                        <label>password</label>
+                    {state.errors.password === null ? null: <div className='err-alert'>{state.errors.email}</div>} 
+                
+                    <div className='input-block'>
                         <input 
                             name='password'
                             type='password'
+                            placeholder='Password'
                             value={state.password}
                             onChange={e=>handlChange(e)}
                             />
-                        {state.errors.password === null ? null: <div>{state.errors.password}</div>} 
                     </div>
-                    <button disabled={ state.button ? true : false} >submit</button>
+                    {state.errors.password === null ? null: <div className='err-alert'>{state.errors.password}</div>}
+                    <button disabled={ state.button ? true : false} className={state.button ? 'btn-deactive' : 'btn-active'} >Submit</button>
                 </form>
                 {state.errors.invalid ? <div>{state.errors.invalid}</div>: null}
             </div>

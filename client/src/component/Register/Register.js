@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import axios from 'axios'
 import {validateEmail, validatePassword} from './validate'
-
+import './Register.css'
 const Register = ()=>{
     const [state, setState] = useState({
         name:'',
@@ -80,39 +80,40 @@ const Register = ()=>{
     }
 
     return(
-        <div>
+        <div className='container-box login-section'  id='register'>
+            <h3>Registration</h3>
             <form onSubmit={event=>handleSubmit(event)}>
                 <div className='input-field'>
-                    <label>name</label>
                     <input 
                         name='name'
-                        type='name'
+                        type='text'
                         value={state.name}
+                        placeholder='Name'
                         onChange = {e=>handlChange(e)}
                         />
                 </div>
                 
-                <div className='input-field'>
-                    <label>eamil</label>
+                <div className='input-block'>
                     <input 
                         name='email'
-                        type='name'
+                        type='text'
                         value={state.email}
+                        placeholder='Email'
                         onChange = {e=>handlChange(e)}
                         />
                 </div>
 
-                <div className='input-field'>
-                    <label>password</label>
+                <div className='input-block'>
                     <input 
                         name='password'
                         type='password'
+                        placeholder='Password'
                         value={state.password}
                         onChange = {e=>handlChange(e)}
                         />
                 </div>
                 
-                <button disabled={ state.button ? true : false} >submit</button>
+                <button disabled={ state.button ? true : false} className={state.button ? 'btn-deactive' : 'btn-active'} >Submit</button>
             </form>
         </div>
     )

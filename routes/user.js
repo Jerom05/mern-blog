@@ -42,4 +42,14 @@ router.post('/', async (req,res)=>{
         .json({token})
 })
 
+//// working with update //// 
+router.put('/:id',async (req, res)=>{
+    const {error} = validation(req.body)
+    if(error) return res.status(400).send(error.details[o].message)
+    let user = await User.findById(req.id)
+    user = new User({
+
+    })
+})
+
 module.exports = router
