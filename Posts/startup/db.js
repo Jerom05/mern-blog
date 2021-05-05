@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
-
-mongoose.connect('mongodb://localhost:/myDB', {
+module.exports = ()=>{
+    mongoose.connect('mongodb://localhost:/Posts', {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -9,4 +9,5 @@ mongoose.connect('mongodb://localhost:/myDB', {
     console.log('Database Connected Successfully');
 })
   .catch(error => console.log(error));
- 
+  
+}
