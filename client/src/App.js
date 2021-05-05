@@ -22,6 +22,7 @@ const App = ()=>{
         <Route path='/Register' component = {Register}/>
         <Route path='/users' component= { UserList} />
         <Route path='/profile' component={UserProfile} />
+        <Redirect exact from='/' to='/Home' />
       </Switch>
     </div>
   )
