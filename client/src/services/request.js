@@ -13,7 +13,7 @@ export const createPost = async(title, description)=>{
 }
 
 export const createComment = async(id, comment)=>{
-    await axios.post(`http://localhost:5000/api/post/comment/:${id}`,{
+    await axios.post(`http://localhost:5000/api/post/comment/${id}`,{
         description : comment
     })
 }

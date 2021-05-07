@@ -59,14 +59,24 @@ hr{
     line-height: 1.5;
     color: black;
 }
+.comment-div{
+    min-height: 300px;
+    max-height: 1000px;
+    overflow: scroll;
+    /* overflow-y: hidden;  */
+  overflow-x: hidden;
+}
+
 .comment{
     font-size: 15px;
     font-weight: 400;
-    width:37%;
+    min-width:2rem;
+    max-width:37%;
     min-height: 2rem;
     padding: 1rem;
     border-radius: 7px;
     background-color: #F0F0F0;
+    margin-bottom: 5px;
 }
 .comment h3{
     font-family:'Times New Roman', Times, serif;
