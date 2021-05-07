@@ -1,53 +1,7 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-p{
-    margin:0;
-    padding: 0;
-}
 .homepage{
-    background-color: white;
-    font-family: sans-serif;
+    background-color: #f6f8fa;
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 1rem;
 }
 
 .homepage-container{
@@ -55,22 +9,18 @@ p{
 }
 
 .post{
-    background-color: #CBFBDB;
+    background-color: white;
     width: 60%;
-    /* border: 1px solid black; */
     border-radius: 5px;
     margin-top: 1rem;
     margin-left: 10%;
-    padding: 1rem;
+    padding: 1.5rem 1rem;
 
 }
- /* border: 1px solid blue; */
 .content{
     width: 90%;
     margin: 0 auto;
-    /* padding:0 1rem 0 1rem ; */
 }
-
 .title-date-contianer{
     display: flex;
     flex-direction: row;
@@ -78,7 +28,6 @@ p{
 }
 
 .title{
-    /* border: 1px solid green; */
     width: 75% ;
 }
 .date{
@@ -89,34 +38,89 @@ p{
     padding-top: 7px;
 }
 .title h1{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin: 0;
-    font-weight: 400;
-    color: #3b3a38;
+    font-weight: 500;
+    color: black;
 }
-.author{
-    font-size: 13px;
+.author span{
     margin-top:6px;
-    margin-top: 0;
-    font-weight: 400;
-    color: #483131;
+    font-size: 12px;
 }
-
+hr{
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1);
+}
 .description {
     margin-top: 0.4rem;
-    /* padding: 1rem 0; */
-    font-size: 1.1rem;
-    color: #392c2c;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: black;
 }
-
 .comment{
-    margin-top: 0.3rem;
+    font-size: 15px;
+    font-weight: 400;
+    width:37%;
+    min-height: 2rem;
+    padding: 1rem;
+    border-radius: 7px;
+    background-color: #F0F0F0;
+}
+.comment h3{
+    font-family:'Times New Roman', Times, serif;
+    font-size: 16px;
+    font-weight: 500px;
+}
+.comment p{
+    margin-top:5px;
+    font-size: 14px;
+    font-weight: 400;
+}
+.comment-section{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    /* border : 1px solid black; */
+    padding: 1rem 0;
+}
+.comment-box-input{
+    width: 37%;
+    min-height: 2rem;
+    margin-right: 1.4rem;
+    border-radius: 5px;
 }
 
-.comment span{
-    background-color: #c1d2c1;
+textarea {
+    font-size: 14px;
+    font-family: 'Nunito', sans-serif;
+    width: 100%;
+    height: 80%;
+    padding: 12px 12px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 7px;
+    background-color: #f8f8f8;
+    resize: none;
+    
+  }
+ 
+::placeholder{
+    margin-top: 1.5rem;
+  }
+
+.comment-submit-button{
+    margin-top: 10px;
+    background-color: #D6D9D9;
     font-size: 0.8rem;
+    font-weight: 500;
+    height: 20px;
     border-radius: 3px;
-    padding: 0rem 0.4rem 0rem 0.4rem;
-    color: #1f1a1a;
+    padding: 0.6rem;
+    color: black;
+    line-height: 5mm;
+    cursor: pointer;
 }

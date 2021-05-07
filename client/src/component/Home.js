@@ -1,21 +1,15 @@
 import {useState,useEffect} from 'react'
-//import { post } from '../..routes/user'
-import {getPosts,createPost} from '../services/request'
+import {getPosts,createPost, createComment} from '../services/request'
 import jwtDecode from 'jwt-decode'
 import './Home.css'
 const Home = ()=>{
-    const [posts, setPost] = useState([])
-    const [user, setUser] = useState([])
+    const [posts, setPost] = useState([{title:"English Grammer", comments:[{name:"Jerom", text:'Thankyou'}]}])
+    const [user, setUser] = useState(null)
     const [state, setState] = useState({
         title:'',
         description:'',
-        password:'',
-        errors:{
-            email:'',
-            password: '',
-            invalid:''
-        },
-        button:true
+        comment: '',
+        commentValue: ''
     })
 
     useEffect(()=>{
@@ -24,7 +18,7 @@ const Home = ()=>{
             const user = jwtDecode(token)
             
             if(user){
-                setUser([user])
+                setUser(user)
               }
         }
         catch(ex){
@@ -42,7 +36,7 @@ const Home = ()=>{
         }
         getPost()
         console.log('home post',posts)
-    },[state])
+    },[posts])
 
     const handlChange = (e)=>{
         const property = e.target.name
@@ -54,6 +48,12 @@ const Home = ()=>{
         event.preventDefault()
         await createPost(state.title,state.description)
         setState({...state, title:'', description:''})
+        setPost([...posts])
+    }
+
+    const makeComment = async(id) =>{
+        await createComment(id, state.comment)
+        setPost([...posts])
     }
 
     const renderPost = ()=>{
@@ -74,13 +74,43 @@ const Home = ()=>{
                                 <div className="author">
                                     <span>Posted By {post.author}</span>
                                 </div>
+
+                                <hr />
                                 <div className="description">
                                     {post.description}
+                                    something
                                     {/* English grammar is the way in which meanings are encoded into wordings in the English language. This includes the structure of words, phrases, clauses, sentences, and whole texts. ... Nouns form the largest word class, and verbs the second-largest. */}
                                 </div>
-                                <div className='comment'>
-                                    <span>Comment</span>
-                                </div>
+                                <hr />
+
+                                {post.comments.map((comment,index)=>(
+                                    <div className='comment'>
+                                        <div>
+                                            <h3>{comment.name}</h3>
+                                            <p>{comment.description}</p>
+                                        </div>
+                                    </div>
+                                ))}
+
+                                { user ? 
+                                    <div className='comment-section'>
+                                        <div className="comment-box-input">
+                                            <textarea 
+                                                name="comment" 
+                                                onClick={()=> setState({...state, commentValue:post._id, comment:''})}
+                                                value = {state.commentValue === post._id ? state.comment : null}
+                                                onChange={(e)=>handlChange(e)}
+                                                form="usrform" 
+                                                placeholder="Comment here">
+                                            </textarea>
+                                        </div>
+                                        <div onClick ={()=>makeComment(post._id)} className="comment-submit-button">
+                                            Comment 
+                                        </div>
+                                        {post._id}
+                                     </div>
+                                    : null
+                                }
                             </div>
                         </div>
                     )})}
@@ -94,7 +124,6 @@ const Home = ()=>{
                 <div className = "create-post-form">
                 </div>
                 {posts.length !==0 ?renderPost():'No posts yet'}
-
             </div>
         </div>
     )
