@@ -1,0 +1,16 @@
+.userlist{
+    margin-left: 5%;
+    
+}
+.user-item{
+    
+}
+.user-item div{
+    background-color: white;
+    width: 24%;
+    height: 3rem;
+    padding: 2rem;
+    line-height: 32px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}

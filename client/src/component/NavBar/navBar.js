@@ -28,17 +28,14 @@ const NavBar = ()=>{
     console.log('nav', state)
 
     return(
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <NavLink className="item" to="/">HomeWork</NavLink>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
+        <nav className="navbar-section">
+            <div className="logo">
+                <NavLink className="item" to="/">ShareZone</NavLink>
+            </div>
 
-            <div className="collapse navbar-collapse d-flex flex-row-reverse" id="navbarNav">
-                    
-              {
-                  !user && (
-                    <ul className="navbar-nav">
+            <div className="navbar-items" >     
+                {!user && (
+                    <ul className="navbar-item">
                         <li className="nav-item active">
                             <NavLink className="item" to="/Login">Login</NavLink>
                         </li>
@@ -46,25 +43,21 @@ const NavBar = ()=>{
                              <NavLink className="item" to="/register">Register</NavLink>
                         </li>
                      </ul>
-                  )
-              }
-
-                {
-                  user && (
-                    <ul className="navbar-nav">
+                )}
+                {user && (
+                    <ul className="navbar-item">
                         <li className="nav-item active">
-                            <NavLink className="nav-item nav-link" to="/profile">{user.name}</NavLink>
+                        <NavLink className=" item" to='/logout'>Logout</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className=" nav-item nav-link" to='/users'>users</NavLink>
+                            <NavLink className=" item" to='/users'>users</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className=" nav-item nav-link" to='/logout'>Logout</NavLink>
+                        <NavLink className="item" to="/profile">{user.name}</NavLink>
+                           
                         </li>
-                     </ul>
-                  )
-              }
-              
+                    </ul>
+                 )}
             </div>
         </nav>
     )

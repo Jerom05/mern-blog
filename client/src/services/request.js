@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 axios.defaults.headers.common["x-auth-token"] = localStorage.getItem("token")
 
 export const getPosts = async()=>{
@@ -16,4 +17,8 @@ export const createComment = async(id, comment)=>{
     await axios.post(`http://localhost:5000/api/post/comment/${id}`,{
         description : comment
     })
+}
+
+export const myPosts = async()=>{
+    return await axios.get('http://localhost:5000/api/post/myposts')
 }

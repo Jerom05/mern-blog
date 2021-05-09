@@ -10,6 +10,13 @@ router.get('/',async (req,res)=>{
     res.status(200).send(post)
 })
 
+//my posts
+router.get('/myposts',auth,async (req,res)=>{
+    const posts = await Post.find()
+    const myposts = posts.map(post=>post.authorid === req.user._id)
+    res.status(200).send(myposts)
+})
+
 // Create a new Post
 router.post('/',[auth], async(req, res)=>{
     const {error} = Validation(req.body)

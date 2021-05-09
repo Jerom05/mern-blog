@@ -1,0 +1,23 @@
+.cover-box{
+    background-color: white;
+    width: 40%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 8px;
+    font-family: 'Nunito'
+}
+
+.name-header{
+    padding: 5rem;
+    text-align: center;
+}
+
+.navigation{
+    display: flex;
+    flex-direction:row;
+}
+
+.navigation div{
+    padding-left: 3rem;
+    padding-bottom: 2rem;
+}

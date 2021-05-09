@@ -1,9 +1,10 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
+import './UserList.css'
 axios.defaults.headers.common["x-auth-token"] = localStorage.getItem("token")
 
 const UserList = ()=>{
-    const [state, setState] = useState([])
+    const [state, setState] = useState([{name:"Jerom"}, {name:"Jerom"}])
     useEffect(()=>{
         const getUser = async() =>{
             try{
@@ -18,10 +19,10 @@ const UserList = ()=>{
     },[])
     const renderList = ()=>{
         return(
-            <div>
+            <div className='user-item'>
                 {
                     state.map(user=>(
-                        <div key={user._id}>
+                        <div  key={user._id}>
                             {user.name}
                         </div>
                     ))
@@ -31,9 +32,11 @@ const UserList = ()=>{
     }
     console.log(state)
     return(
-        <div>
+        <div  className="userlist">
+            
+            
            {renderList()}
-           user
+          
         </div>
     )
 }

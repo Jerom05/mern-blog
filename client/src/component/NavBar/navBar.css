@@ -1,4 +1,24 @@
-.header-section{
+.navbar-section{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    align-items: stretch;
+    font-family: 'Nunito';
+    background-color: #a58bff;
+    border-bottom: 1px solid #a58bff ;
+    justify-content: space-around;
+}
+
+.logo{
+    line-height: 31px;
+    margin-left: 5%;
+    width:25%;
+}
+.navbar-items{
+    width: 70%;
+}
+
+.navbar-item{
     display: flex;
     flex-direction: row-reverse;
     height: fit-content;
@@ -6,7 +26,9 @@
 }
 
 .item{
+    font-size: 20px;
+    font-weight: 500;
     margin: 0.5rem;
     text-decoration: none;
-    color: black;
+    color: white;
 }
