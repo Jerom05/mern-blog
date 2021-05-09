@@ -37,7 +37,7 @@ const UserProfile = ()=>{
         return (
             <div>
                 {posts.map(post=>{
-                    <PostItem post={post} user={user} makeRender={makeRender}/>
+                    <PostItem post={post} user={state} makeRender={makeRender}/>
                 })}
             </div>
         )
@@ -64,7 +64,7 @@ const UserProfile = ()=>{
             <div className="body">
                 <Route path='/profile/myposts' component = {post}/>
             </div>
-            
+
         </div>
     )
 }
