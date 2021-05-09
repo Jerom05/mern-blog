@@ -13,7 +13,9 @@ router.get('/',async (req,res)=>{
 //my posts
 router.get('/myposts',auth,async (req,res)=>{
     const posts = await Post.find()
-    const myposts = posts.map(post=>post.authorid === req.user._id)
+    const myposts = posts.filter(post=>post.authorid.toString()===req.user._id)
+    
+    console.log('my post',req.user._id )
     res.status(200).send(myposts)
 })
 

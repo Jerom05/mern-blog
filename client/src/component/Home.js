@@ -38,6 +38,7 @@ const Home = ()=>{
         }
         getPost()
         console.log('home post',posts)
+        console.log('user', user)
     },[render])
 
     const handlChange = (e)=>{

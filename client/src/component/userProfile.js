@@ -26,7 +26,8 @@ const UserProfile = ()=>{
         }
         getUser()
     },[render])
-
+    console.log('user profile', posts)
+  
     const makeRender = ()=>{
         if(render)  setRender(false)
         else setRender(true)
@@ -37,8 +38,12 @@ const UserProfile = ()=>{
         return (
             <div>
                 {posts.map(post=>{
-                    <PostItem post={post} user={state} makeRender={makeRender}/>
+                    return(
+                        <PostItem post={post} user={state} makeRender={makeRender}/>
+                    )
+                    
                 })}
+                post
             </div>
         )
     }
