@@ -1,0 +1,16 @@
+.title-box textarea{
+    width: 40%;
+    height: 20px;
+    border-radius: 5px;
+    height: 45px;
+}
+
+.description-box{
+    width: 40%;
+}
+
+button{
+    background-color: aquamarine;
+    width: 60px;
+    cursor: pointer;
+}

@@ -6,13 +6,13 @@ const router = express.Router()
 
 // Get all Posts 
 router.get('/',async (req,res)=>{
-    const post = await Post.find()
+    const post = await Post.find().sort({date:-1})
     res.status(200).send(post)
 })
 
 //my posts
 router.get('/myposts',auth,async (req,res)=>{
-    const posts = await Post.find()
+    const posts = await Post.find().sort({date:-1})
     const myposts = posts.filter(post=>post.authorid.toString()===req.user._id)
     
     console.log('my post',req.user._id )

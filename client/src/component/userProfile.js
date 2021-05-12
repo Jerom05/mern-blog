@@ -2,7 +2,8 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 import {myPosts} from '../services/request'
 import {Route, Link } from 'react-router-dom';
-import PostItem from './PostItem'
+import PostItem from './common/PostItem/PostItem'
+import PostBox from './common/postBox'
 import './userProfile.css'
 
 axios.defaults.headers.common["x-auth-token"] = localStorage.getItem("token")
@@ -37,9 +38,13 @@ const UserProfile = ()=>{
     const post =()=>{
         return (
             <div>
+                <PostBox makeRender ={makeRender}/>
                 {posts.map(post=>{
                     return(
-                        <PostItem post={post} user={state} makeRender={makeRender}/>
+                        <div>
+                            <PostItem post={post} user={state} makeRender={makeRender}/>
+                        </div>
+                        
                     )
                     
                 })}
@@ -49,7 +54,7 @@ const UserProfile = ()=>{
     }
 
     return(
-        <div>
+        <div className="">
             <div className="cover-box">
                 <div className='name-header'>
                     {state.name}
@@ -67,6 +72,7 @@ const UserProfile = ()=>{
 
 
             <div className="body">
+                
                 <Route path='/profile/myposts' component = {post}/>
             </div>
 

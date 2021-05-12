@@ -1,18 +1,14 @@
 import {useState,useEffect} from 'react'
 import {getPosts,createPost, createComment} from '../services/request'
 import jwtDecode from 'jwt-decode'
-import PostItem from './PostItem'
+import PostItem from './common/PostItem/PostItem'
+import PostBox from './common/postBox'
 import './Home.css'
 
 const Home = ()=>{
     const [posts, setPost] = useState([{title:"English Grammer", comments:[{name:"Jerom", text:'Thankyou'}]}])
     const [user, setUser] = useState(null)
     const [render,setRender] = useState('')
-    const [state, setState] = useState({
-        title:'',
-        description:'',
-        render:true
-    })
 
     useEffect(()=>{
         try{
@@ -41,22 +37,9 @@ const Home = ()=>{
         console.log('user', user)
     },[render])
 
-    const handlChange = (e)=>{
-        const property = e.target.name
-        state[property] = e.target.value
-        setState({...state})
-    }
-
-    const handleSubmit =async (event)=>{
-        event.preventDefault()
-        await createPost(state.title,state.description)
-        setState({...state, title:'', description:''})
-    }
-
     const makeRender = ()=>{
-        if(render)  setRender(false)
-        else setRender(true)
-        
+        if(render)  setRender(!render)
+        else setRender(!render) 
     }
 
     const renderPost = ()=>{
@@ -73,8 +56,11 @@ const Home = ()=>{
     return(
         <div className = "homepage">
             <div className='homepage-container'>
-                <div className = "create-post-form">
-                </div>
+                {user &&(
+                    <div className = "create-post-form">
+                        <PostBox makeRender ={makeRender}/>
+                    </div>
+                )}
                 {posts.length !==0 ?renderPost():'No posts yet'}
             </div>
         </div>
@@ -83,38 +69,3 @@ const Home = ()=>{
 }
 
 export default Home
-
-
-
-
-{/* user post*/}
-            
-// {
-//     user.length ===0? '':<div>
-//         {/* onSubmit={event=>handleSubmit(event)} */}
-//         <form onSubmit={event=>handleSubmit(event)} >
-//     <div className='input-field'>
-//         <input 
-//             name='title'
-//             type='text'
-//             value={state.title}
-//             placeholder='title'
-//            onChange = {e=>handlChange(e)}
-//             />
-//     </div>
-    
-//     <div className='input-block'>
-//         <input 
-//             name='description'
-//             type='text'
-//             value={state.description}
-//             placeholder='description'
-//             onChange = {e=>handlChange(e)}
-//             />
-//     </div>
-    
-//     <button >Submit</button>
-// </form>
-
-//     </div>
-// }
